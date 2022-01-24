@@ -1,0 +1,3 @@
+title-text: "Title Text"
+title-color: "#FFFFFF"
+desktop-image: "background.png"
