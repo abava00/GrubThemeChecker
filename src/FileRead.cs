@@ -6,9 +6,15 @@ namespace Grub{
   public class Reader{
 
     //Show Text
-    public void Show(string filename){
+    public void Read(string filename){
       foreach (string line in File.ReadLines(filename)){
-        Console.WriteLine(line);
+        Splitter plt = new Splitter();
+        string[] temp = new string[2];
+        temp = plt.colon(line);
+        Text.token.Add(temp[0], temp[1]);
+      }
+      foreach (var i in Text.token){
+        Console.WriteLine("key-> " + i.Key + "\nvalue-> " + i.Value);
       }
     }
   }

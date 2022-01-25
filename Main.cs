@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 
 namespace Grub{
+
   public class mainWindow : Form{
     public static void Main(){
       Application.Run(new mainWindow());
@@ -28,8 +29,11 @@ namespace Grub{
       rfb.Width = 50;
       rfb.Parent = this;
 
+      // Grub.Text.token.Add("hello", "World");
+
       //events
-      rfb.Click += OpenFileSelectDialog;
+      // rfb.Click += OpenFileSelectDialog;
+      rfb.Click += Dummy_OpenFileSelectDialog;
     }
 
     public void OpenFileSelectDialog(Object sender, EventArgs e){
@@ -39,9 +43,15 @@ namespace Grub{
 
       if (ofd.ShowDialog() == DialogResult.OK){
         Reader read_text = new Reader();
-        read_text.Show(Path.GetFullPath(ofd.FileName));
+        // read_text.Read(Path.GetFullPath(ofd.FileName));
+        read_text.Read(Path.GetFullPath("sample.txt"));
       }
+    }
 
+    public void Dummy_OpenFileSelectDialog(Object sender, EventArgs e){
+      Reader read_text = new Reader();
+      read_text.Read(Path.GetFullPath("sample.txt"));
+      this.Close();
     }
   }
 }
