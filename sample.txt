@@ -1,3 +1,9 @@
 title-text: "Title Text"
 title-color: "#FFFFFF"
 desktop-image: "background.png"
+
++ boot_menu {
+  left = 50%-300
+  
+  select_item_color = "#000000"
+}
