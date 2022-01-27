@@ -4,7 +4,7 @@ namespace Grub{
 
   public class Splitter{
 
-    public static bool parter_exist_check(string line, char parter){
+    public static bool ParterExitsCheck(string line, char parter){
       /*:や+,{}などがlineに存在するかどうか確認する*/
       foreach(var i in line){
         if(i == parter){
@@ -14,9 +14,9 @@ namespace Grub{
       return false;
     }
 
-    public string[] colon(string line){
+    public string[] Colon(string line){
       /*
-       * 入力が 
+       * 入力が
        * title-text: "TITLE"
        * のようなときに
        * [title-text, "TITLE"]
@@ -28,7 +28,7 @@ namespace Grub{
       return temp;
     }
 
-    public string[] equal(string line){
+    public string[] Equal(string line){
       /*
        * 入力が
        * letf = 50%-300
@@ -43,7 +43,7 @@ namespace Grub{
       return temp;
     }
 
-    public string[] plus(string line){
+    public string[] Plus(string line){
       /*
        * 入力が
        * (+) boot_menu {
@@ -56,12 +56,39 @@ namespace Grub{
        * [boot_menu, left =...00FF]
        */
 
-      string[] temp = line.Split('{');
-
-      Console.WriteLine(temp[0]);
-      Console.WriteLine(temp[1]);
+      string[] temp = line.Split('+');
+      temp = temp[1].Split('{');
 
       return temp;
+    }
+
+    public void AAA(string line){
+      bool in_doublequo = false;
+      string word = "";//""の中身の文字列を格納する
+
+      foreach(char c in line){
+        if(in_doublequo){
+          //ダブルクオーテーションの内側
+          if(c == '"'){
+            in_doublequo = false;
+            Console.WriteLine("中最後");
+            Console.WriteLine(word);
+            word = "";
+
+          }else{
+            Console.WriteLine("中");
+            word += c;
+          }
+        }else{
+          //ダブルクオーテーションの外側
+          if(c == '"'){
+            in_doublequo = true;
+            Console.WriteLine("中最初");
+          }else{
+            Console.WriteLine("外");
+          }
+        }
+      }
     }
   }
 }

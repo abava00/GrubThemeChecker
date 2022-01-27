@@ -16,5 +16,4 @@ namespace Grub{
       public static Dictionary<string, string> token = new Dictionary<string, string>();
   }
 
-     public static string stack = new string();
 }
